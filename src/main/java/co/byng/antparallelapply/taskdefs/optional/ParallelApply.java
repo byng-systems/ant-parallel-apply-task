@@ -263,32 +263,4 @@ public class ParallelApply extends ExecuteOn {
         
     }
     
-    public static void main(String[] args) {
-        
-        File buildXml = new File("/home/matt/dev/build.xml");
-        
-        ProjectHelper helper = ProjectHelper.getProjectHelper();
-        
-        Project project = new Project();
-        project.addTaskDefinition("parallel-apply", ParallelApply.class);
-        
-        BuildLogger logger = new DefaultLogger();
-        logger.setOutputPrintStream(System.out);
-        logger.setErrorPrintStream(System.out);
-        logger.setMessageOutputLevel(Project.MSG_INFO);
-        
-        project.addBuildListener(logger);
-        project.init();
-        
-        helper.parse(project, buildXml);
-        
-        project.executeTarget(project.getDefaultTarget());
-    }
-    
-    
-    
-    /**
-     * 
-     */
-    
 }
