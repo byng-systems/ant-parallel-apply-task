@@ -180,7 +180,7 @@ public class ParallelApply extends ExecuteOn {
         this.fileMessageBuffer.clear();
         this.subtaskExceptions.clear();
         
-        super.log("Executing command '" + this.executable + "' on " + fileNames.size() + " files");
+        super.log("Executing command '" + this.cmdl.toString() + "' on " + fileNames.size() + " files");
         
         ExecutorService threadPool = Executors.newFixedThreadPool(this.threadCount);
 
