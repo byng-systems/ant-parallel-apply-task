@@ -15,10 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.BuildLogger;
-import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
-import org.apache.tools.ant.ProjectHelper;
 import org.apache.tools.ant.taskdefs.Execute;
 import org.apache.tools.ant.taskdefs.ExecuteOn;
 
@@ -183,7 +180,7 @@ public class ParallelApply extends ExecuteOn {
         this.fileMessageBuffer.clear();
         this.subtaskExceptions.clear();
         
-        super.log("Executing command '" + this.executable + "' on " + fileNames.size() + " files");
+        super.log("Executing command '" + this.cmdl.toString() + "' on " + fileNames.size() + " files");
         
         ExecutorService threadPool = Executors.newFixedThreadPool(this.threadCount);
 
@@ -258,7 +255,7 @@ public class ParallelApply extends ExecuteOn {
                 super.log("\n\n", Project.MSG_INFO);
             }
         } else {
-            super.log("No syntax errors found.");
+            super.log("All subtasks executed successfully.");
         }
         
     }
