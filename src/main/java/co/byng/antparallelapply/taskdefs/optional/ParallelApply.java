@@ -231,8 +231,14 @@ public class ParallelApply extends ExecuteOn {
     protected void dumpMessages() throws BuildException {
         
         for (File f : fileMessageBuffer.keySet()) {
+            
+            List<BufferedLogMessage> messageBuffer = fileMessageBuffer.get(f);
+            
+            if (messageBuffer == null) {
+                continue;
+            }
 
-            for (BufferedLogMessage m : fileMessageBuffer.get(f)) {
+            for (BufferedLogMessage m : messageBuffer) {
                 int messageLogLevel = m.getMessageLogLevel();
 
                 if (messageLogLevel <= this.logThreshold) {
